@@ -15,8 +15,9 @@ let secretNumber =Math.trunc(Math.random()*20)+1;
 function init(){
     chancesEl.innerText = chances;
     scoreEl.innerText = score;
-    let secretNumber =Math.trunc(Math.random()*20)+1;
-}
+    secretNumber =Math.trunc(Math.random()*20)+1;
+};
+
 
 // event listeners
 guessBtnEl.addEventListener("click", ()=>{
@@ -28,46 +29,52 @@ guessBtnEl.addEventListener("click", ()=>{
         }else{
             if(guess===secretNumber){
                 messageEl.style.color = "rgb(14, 229, 8)";
-                messageEl.innerText = "Congrats! You Won";
-                scoreEl.innerText = chances;
+                messageEl.innerText = "Congratulations! You Won! 👏";
+                messageEl.style.fontSize = "25px";
                 inputEl.value = null;
+                scoreEl.innerText = chances;    
             }
             else if(guess<secretNumber){
                 messageEl.style.color = "red";
+                messageEl.style.fontSize = "25px";
+                messageEl.style.fontWeight = "600";
                 messageEl.innerText = "Your guess is too low";
+                inputEl.value = null;
                 chances--;
                 chancesEl.innerText = chances;
-                inputEl.value = null;
             }
             else if(guess>secretNumber){
                 messageEl.style.color = "red";
+                messageEl.style.fontSize = "25px";
+                messageEl.style.fontWeight = "600";
                 messageEl.innerText = "Your guess is too high";
+                inputEl.value = null;
                 chances--;
                 chancesEl.innerText = chances;
-                inputEl.value = null;
             }
         }
     }else{
         messageEl.style.color = "red";
         messageEl.innerText = "You Lost the Game!";
         inputEl.value = null;
-        chancesEl.innerText = 0;
     }
 });
 
+
 startBtnEl.addEventListener("click", ()=>{
-    chancesEl.innerText = 7;
+    chances = 6;
+    chancesEl.innerText = 6;
+    secretNumber = Math.trunc(Math.random()*20)+1;
+    messageEl.innerText = "Guess a number between 1 to 20";
+    messageEl.style.color = "rgb(214, 227, 238)";  
     scoreEl.innerText = 0;
-    messageEl.innerText = "Click on guess to guess a number between 1 to 50";
-    messageEl.style.color = "rgb(214, 227, 238";
-    secretNumber =Math.trunc(Math.random()*20)+1;
-})
+});
 
 
-
+init();
 
 // initial setup
-init();
+
 
 
 
